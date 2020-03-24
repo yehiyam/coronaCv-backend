@@ -1,4 +1,6 @@
 const express = require('express');
+const { promisify } = require('util')
+const delay = promisify(setTimeout);
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('./lib/middlewares/cors');
@@ -10,8 +12,42 @@ const monitors = require('./lib/routes/monitor')
 
 const db = require('./lib/storage/mongo');
 const { PORT, dbConfig } = require('./config');
+
+const _handleErrors = () => {
+    process.on('exit', (code) => {
+        console.log(`exit code ${code}`);
+    });
+    process.on('SIGINT', () => {
+        console.log('SIGINT');
+        process.exit(0);
+    });
+    process.on('SIGTERM', () => {
+        console.log('SIGTERM');
+        process.exit(0);
+    });
+    process.on('unhandledRejection', (error) => {
+        console.error(`unhandledRejection: ${error.message}`, error);
+        // process.exit(1);
+    });
+    process.on('uncaughtException', (error) => {
+        console.error(`uncaughtException: ${error.message}`, error);
+        process.exit(1);
+    });
+}
+
 const main = async () => {
-    await db.init(dbConfig);
+    _handleErrors()
+    let dbInit = false
+    while (!dbInit) {
+        try {
+            await db.init(dbConfig);
+            dbInit = true
+            console.log('db connected')
+        } catch (error) {
+            console.error(error.message)
+            await delay(1000)
+        }
+    }
     const app = express();
     app.use(cors); // CORS middleware
     app.use(bodyParser.json({ limit: '10mb' }));
