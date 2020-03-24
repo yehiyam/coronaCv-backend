@@ -5,8 +5,9 @@ const config = {
     },
     cvConfig:{
         host: process.env.CVMONITOR_HOST || 'localhost',        
-        port: process.env.CVMONITOR_PORT || '8080',     
-        schema: 'http'   
+        port: process.env.CVMONITOR_PORT || '8088',     
+        schema: 'http',
+        path: '/v1'  
     }
 }
 

@@ -14,7 +14,7 @@
             "program": "${workspaceFolder}/app.js",
             "outputCapture": "std",
             "env": {
-                "CVMONITOR_PORT":"3001"
+                // "CVMONITOR_PORT":"3001"
             }
         }
     ]
