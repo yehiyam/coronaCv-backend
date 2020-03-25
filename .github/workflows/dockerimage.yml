@@ -20,3 +20,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: yehiyam/monitor-backend
           tags: latest
+          tag_with_ref: true
