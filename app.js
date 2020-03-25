@@ -1,4 +1,6 @@
 const express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 const { promisify } = require('util')
 const delay = promisify(setTimeout);
 const bodyParser = require('body-parser');
@@ -7,8 +9,10 @@ const cors = require('./lib/middlewares/cors');
 const errors = require('./lib/middlewares/errors');
 const swaggerRoute = require('./lib/middlewares/swagger-route');
 const monitorImage = require('./lib/routes/monitor-image')
+const monitorData = require('./lib/routes/monitor-data')
 const monitorSetup = require('./lib/routes/monitor-setup')
 const monitors = require('./lib/routes/monitor')
+const cv = require('./lib/services/cv')
 
 const db = require('./lib/storage/mongo');
 const { PORT, dbConfig } = require('./config');
@@ -50,6 +54,19 @@ const main = async () => {
     }
     const app = express();
     app.use(cors); // CORS middleware
+
+    const proxyOptions = {
+        target: cv.baseUrl(),
+        changeOrigin: true,
+        followRedirects: true,
+        pathRewrite: {
+            '^/cvproxy/': '/' // remove base path
+          }
+    };
+
+    const apiProxy = createProxyMiddleware( proxyOptions);
+    app.use('/cvproxy',apiProxy);
+
     app.use(bodyParser.json({ limit: '10mb' }));
     app.use(bodyParser.raw({
         type: 'image/jpeg',
@@ -61,7 +78,8 @@ const main = async () => {
     const routes = [
         monitorImage,
         monitorSetup,
-        monitors
+        monitors,
+        monitorData
     ]
     routes.forEach(r => {
         const route = r();
