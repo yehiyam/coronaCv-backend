@@ -5,6 +5,8 @@ const { promisify } = require('util')
 const delay = promisify(setTimeout);
 const bodyParser = require('body-parser');
 const path = require('path');
+const metrics = require('./lib/services/metrics');
+
 const cors = require('./lib/middlewares/cors');
 const errors = require('./lib/middlewares/errors');
 const swaggerRoute = require('./lib/middlewares/swagger-route');
@@ -15,7 +17,7 @@ const monitors = require('./lib/routes/monitor')
 const cv = require('./lib/services/cv')
 
 const db = require('./lib/storage/mongo');
-const { PORT, dbConfig } = require('./config');
+const { PORT, dbConfig, metricsConfig } = require('./config');
 
 const _handleErrors = () => {
     process.on('exit', (code) => {
@@ -52,6 +54,9 @@ const main = async () => {
             await delay(1000)
         }
     }
+
+    await metrics.init(metricsConfig);
+
     const app = express();
     app.use(cors); // CORS middleware
 
@@ -66,7 +71,7 @@ const main = async () => {
 
     const apiProxy = createProxyMiddleware( proxyOptions);
     app.use('/cvproxy',apiProxy);
-
+    app.use('/metrics',metrics.getRouter().router)
     app.use(bodyParser.json({ limit: '10mb' }));
     app.use(bodyParser.raw({
         type: 'image/jpeg',

@@ -3,11 +3,17 @@ const config = {
     dbConfig: {
         connection: process.env.DB_CONNECTION || 'mongodb://localhost/test'
     },
-    cvConfig:{
-        host: process.env.CVMONITOR_HOST || 'localhost',        
-        port: process.env.CVMONITOR_PORT || '8088',     
+    cvConfig: {
+        host: process.env.CVMONITOR_HOST || 'localhost',
+        port: process.env.CVMONITOR_PORT || '8088',
         schema: 'http',
-        path: 'v1'  
+        path: 'v1'
+    },
+    metricsConfig: {
+        collectDefault: false,
+        server: {
+            // port: process.env.METRICS_PORT || '5000'
+        }
     }
 }
 
