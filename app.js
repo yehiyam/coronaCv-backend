@@ -61,7 +61,7 @@ const main = async () => {
     app.use(cors); // CORS middleware
 
     const proxyOptions = {
-        target: cv.baseUrl(),
+        target: cv.baseUrlNoPath(),
         changeOrigin: true,
         followRedirects: true,
         pathRewrite: {
