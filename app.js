@@ -9,6 +9,7 @@ const metrics = require('./lib/services/metrics');
 
 const cors = require('./lib/middlewares/cors');
 const errors = require('./lib/middlewares/errors');
+const logs = require('./lib/middlewares/logs');
 const swaggerRoute = require('./lib/middlewares/swagger-route');
 const monitorImage = require('./lib/routes/monitor-image')
 const monitorData = require('./lib/routes/monitor-data')
@@ -59,6 +60,7 @@ const main = async () => {
 
     const app = express();
     app.use(cors); // CORS middleware
+    app.use(logs()); 
 
     const proxyOptions = {
         target: cv.baseUrlNoPath(),
