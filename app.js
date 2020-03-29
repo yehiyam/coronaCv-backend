@@ -32,11 +32,11 @@ const _handleErrors = () => {
         process.exit(0);
     });
     process.on('unhandledRejection', (error) => {
-        console.error(`unhandledRejection: ${error.message}`, error);
+        console.error(`unhandledRejection: ${error.message}`);
         // process.exit(1);
     });
     process.on('uncaughtException', (error) => {
-        console.error(`uncaughtException: ${error.message}`, error);
+        console.error(`uncaughtException: ${error.message}`);
         process.exit(1);
     });
 }
