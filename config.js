@@ -14,6 +14,9 @@ const config = {
         server: {
             // port: process.env.METRICS_PORT || '5000'
         }
+    },
+    timeouts:{
+        saveToDb: process.env.SAVE_TO_DB_TIMEOUT || 10*1000*60
     }
 }
 
