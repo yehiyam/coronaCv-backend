@@ -16,6 +16,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yehiyam/monitor-backend
+          repository: brainoom/monitor-backend
           tags: latest
           tag_with_ref: true

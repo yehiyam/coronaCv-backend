@@ -43,19 +43,19 @@ services:
   #     - prom
   #     - mongo
   
-  cvbackend:
-    image: brainoom/cvmonitor:v0.3.8
-    restart: always
-    ports:
-      - "8088:8088"
-    expose:
-      - 8088
-    environment:
-      CVMONITOR_SAVE_BEFORE_ALIGN: ${CVMONITOR_SAVE_BEFORE_ALIGN:-'FALSE'}
-      CVMONITOR_SAVE_AFTER_ALIGN: ${CVMONITOR_SAVE_AFTER_ALIGN:-'FALSE'}
-      CVMONITOR_QR_TARGET_SIZE: ${CVMONITOR_QR_TARGET_SIZE:-100}
-      CVMONITOR_PORT: 8088
-      CVMONITOR_QR_PREFIX: ${CVMONITOR_QR_PREFIX:-""}
+#  cvbackend:
+#    image: brainoom/cvmonitor:v0.3.8
+#    restart: always
+#    ports:
+#      - "8088:8088"
+#    expose:
+#      - 8088
+#    environment:
+#      CVMONITOR_SAVE_BEFORE_ALIGN: ${CVMONITOR_SAVE_BEFORE_ALIGN:-'FALSE'}
+#      CVMONITOR_SAVE_AFTER_ALIGN: ${CVMONITOR_SAVE_AFTER_ALIGN:-'FALSE'}
+#      CVMONITOR_QR_TARGET_SIZE: ${CVMONITOR_QR_TARGET_SIZE:-100}
+#      CVMONITOR_PORT: 8088
+#      CVMONITOR_QR_PREFIX: ${CVMONITOR_QR_PREFIX:-""}
     # depends_on: 
     #   - jaeger
   backend:
