@@ -17,7 +17,8 @@ const config = {
     },
     timeouts:{
         saveToDb: process.env.SAVE_TO_DB_TIMEOUT || 10*1000*60
-    }
+    },
+    sendImages: process.env.SEND_IMAGES || "true"
 }
 
 module.exports = config;
