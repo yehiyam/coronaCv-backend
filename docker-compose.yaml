@@ -59,7 +59,7 @@ services:
     # depends_on: 
     #   - jaeger
   backend:
-    image: yehiyam/monitor-backend:v0.0.18
+    image: yehiyam/monitor-backend:v0.0.20
     restart: always
     ports:
       - "80:3000"
