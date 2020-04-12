@@ -15,7 +15,9 @@
             "program": "${workspaceFolder}/app.js",
             "outputCapture": "std",
             "env": {
-                "PORT": "80"
+                "PORT": "5555",
+                "COVIEW_ENABLED":"true",
+                "COVIEW_INTERVAL":"5000"
                 // "CVMONITOR_PORT":"3001"
             }
         }

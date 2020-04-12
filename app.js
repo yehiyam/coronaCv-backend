@@ -15,6 +15,7 @@ const monitorImage = require('./lib/routes/monitor-image')
 const monitorData = require('./lib/routes/monitor-data')
 const monitorSetup = require('./lib/routes/monitor-setup')
 const monitors = require('./lib/routes/monitor')
+const coview = require('./lib/services/coview');
 const cv = require('./lib/services/cv')
 
 const db = require('./lib/storage/mongo');
@@ -93,7 +94,7 @@ const main = async () => {
         app.use(route.path, route.router)
     })
     app.use(errors);
-
+    coview.start();
     app.listen(PORT, () => {
         console.log('Server is up and running on port ' + PORT);
     });

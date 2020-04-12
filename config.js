@@ -18,7 +18,16 @@ const config = {
     timeouts:{
         saveToDb: process.env.SAVE_TO_DB_TIMEOUT || 10*1000*60
     },
-    sendImages: process.env.SEND_IMAGES || "true"
+    sendImages: process.env.SEND_IMAGES || "true",
+    coviewConfig:{
+        host: process.env.COVIEW_HOST || 'localhost',
+        port: process.env.COVIEW_PORT || '8080',
+        schema: 'http',
+        path: '',
+        intervalMs: process.env.COVIEW_INTERVAL || '30000',
+        enabled: process.env.COVIEW_ENABLED === 'true' || false
+    }
+
 }
 
 module.exports = config;
