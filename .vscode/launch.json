@@ -16,7 +16,7 @@
             "outputCapture": "std",
             "env": {
                 "PORT": "5555",
-                "CVMONITOR_HOST":"172.18.0.5"
+                "CVMONITOR_HOST":"172.18.0.4"
                 // "COVIEW_ENABLED":"true",
                 // "COVIEW_INTERVAL":"5000"
                 // "CVMONITOR_PORT":"3001"
