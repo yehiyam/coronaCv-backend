@@ -15,11 +15,12 @@ const config = {
             // port: process.env.METRICS_PORT || '5000'
         }
     },
-    timeouts:{
-        saveToDb: process.env.SAVE_TO_DB_TIMEOUT || 10*1000*60
+    timeouts: {
+        saveToDb: process.env.SAVE_TO_DB_TIMEOUT || 10 * 1000 * 60,
+        sendImagesTimeout: process.env.SEND_IMAGES_TIMEOUT || '10000',
     },
     sendImages: process.env.SEND_IMAGES || "true",
-    coviewConfig:{
+    coviewConfig: {
         host: process.env.COVIEW_HOST || 'localhost',
         port: process.env.COVIEW_PORT || '8080',
         schema: 'http',
