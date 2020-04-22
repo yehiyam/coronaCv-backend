@@ -26,7 +26,8 @@ const config = {
         schema: 'http',
         path: '',
         intervalMs: process.env.COVIEW_INTERVAL || '30000',
-        enabled: process.env.COVIEW_ENABLED === 'true' || false
+        enabled: process.env.COVIEW_ENABLED === 'true' || false,
+        logRequests: process.env.COVIEW_LOG_REQUESTS === 'true' || false
     }
 
 }

@@ -16,9 +16,12 @@
             "outputCapture": "std",
             "env": {
                 "PORT": "5555",
-                "CVMONITOR_HOST":"172.18.0.4"
-                // "COVIEW_ENABLED":"true",
-                // "COVIEW_INTERVAL":"5000"
+                "CVMONITOR_HOST":"172.21.0.4",
+                "COVIEW_ENABLED":"true",
+                "COVIEW_HOST":"52.174.25.215",
+                "COVIEW_PORT":"9040",
+                "COVIEW_INTERVAL":"5000",
+                "COVIEW_LOG_REQUESTS": "true"
                 // "CVMONITOR_PORT":"3001"
             }
         }
