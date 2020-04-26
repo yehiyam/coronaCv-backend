@@ -18,6 +18,7 @@ const config = {
     timeouts: {
         saveToDb: process.env.SAVE_TO_DB_TIMEOUT || 10 * 1000 * 60,
         sendImagesTimeout: process.env.SEND_IMAGES_TIMEOUT || '10000',
+        autofocusTimeout: process.env.AUTOFOCUS_TIMEOUT || '10000',
     },
     sendImages: process.env.SEND_IMAGES || "true",
     coviewConfig: {

@@ -15,9 +15,10 @@
             "program": "${workspaceFolder}/app.js",
             "outputCapture": "std",
             "env": {
+                "DB_CONNECTION":"mongodb://172.19.0.6/test",
                 "PORT": "5555",
                 "CVMONITOR_HOST":"172.21.0.4",
-                "COVIEW_ENABLED":"true",
+                // "COVIEW_ENABLED":"true",
                 // "COVIEW_HOST":"52.174.25.215",
                 // "COVIEW_PORT":"9040",
                 "COVIEW_HOST":"localhost",
