@@ -29,8 +29,10 @@ const config = {
         intervalMs: process.env.COVIEW_INTERVAL || '30000',
         enabled: process.env.COVIEW_ENABLED === 'true' || false,
         logRequests: process.env.COVIEW_LOG_REQUESTS === 'true' || false
+    },
+    applicationConfig: {
+        filesLocation: process.env.APPLICATIONS_LOCATION || "~/Applications"
     }
-
 }
 
 module.exports = config;

@@ -13,6 +13,7 @@ const logs = require('./lib/middlewares/logs');
 const swaggerRoute = require('./lib/middlewares/swagger-route');
 const monitorImage = require('./lib/routes/monitor-image')
 const monitorData = require('./lib/routes/monitor-data')
+const application = require('./lib/routes/application')
 const monitorSetup = require('./lib/routes/monitor-setup')
 const monitorState = require('./lib/routes/monitor-state')
 const monitors = require('./lib/routes/monitor')
@@ -89,7 +90,8 @@ const main = async () => {
         monitorSetup,
         monitorState,
         monitors,
-        monitorData
+        monitorData,
+        application
     ]
     routes.forEach(r => {
         const route = r();
