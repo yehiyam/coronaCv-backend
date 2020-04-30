@@ -31,7 +31,7 @@ const config = {
         logRequests: process.env.COVIEW_LOG_REQUESTS === 'true' || false
     },
     applicationConfig: {
-        filesLocation: process.env.APPLICATIONS_LOCATION || "~/Applications"
+        filesLocation: process.env.APPLICATIONS_LOCATION || "./Applications"
     }
 }
 
